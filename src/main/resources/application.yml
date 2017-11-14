@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: dfs
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
+server:
+  port: 2002
+
+eureka:
+  client:
+    service-url:
+       defaultZone: http://10.0.0.213:1001/eureka/
+  instance:
+    # 注册时使用ip而不是主机名
+    prefer-ip-address: true
+    # 注册名称显示IP和Port
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
+
+#跨域策略的缓存时间
+access:
+  control:
+    maxAge: 1209600
